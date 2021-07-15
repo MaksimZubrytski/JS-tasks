@@ -2,3 +2,4 @@ node_modules
 /.vscode
 /.git
 .eslintrc.js
+**/*.spec.js
