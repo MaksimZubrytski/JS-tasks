@@ -55,14 +55,12 @@ function callWhileStringIsNotEmpty(string, func) {
   if (typeof string !== 'string') {
     return null;
   }
-  let temp = string;
-  for (let i = 0; i < string.length; i += 1) {
-    if (temp.length > 1) {
-      func(temp);
-      temp = temp.slice(0, -1);
-    }
+  const temp = string;
+  if (string.length === 1) {
+    return func(temp);
   }
-  return func(temp);
+  func(temp);
+  return callWhileStringIsNotEmpty(temp.slice(0, -1), func);
 }
 
 module.exports = {
