@@ -27,16 +27,12 @@ function summAdvanced(...args) {
   let sum = 0;
 
   for (let i = 0; i < args.length; i += 1) {
-    if (typeof args[i] === 'function') {
-      if (Number(args[i]())) {
-        sum += Number(args[i]());
-      }
-    } else if (typeof args[i] === 'string') {
-      if (Number(args[i])) {
-        sum += Number(args[i]);
-      }
-    } else if (typeof args[i] === 'number') {
+    if (typeof args[i] === 'function' && !Number.isNaN(+args[i]())) {
+      sum += +args[i]();
+    } else if (typeof args[i] === 'string' && !Number.isNaN(+args[i])) {
       sum += +args[i];
+    } else if (typeof args[i] === 'number') {
+      sum += args[i];
     }
   }
 
