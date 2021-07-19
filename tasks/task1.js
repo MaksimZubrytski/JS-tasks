@@ -42,6 +42,7 @@ function isValueExists(value) {
   if (value === null || typeof value === 'undefined') {
     return false;
   }
+
   return true;
 }
 
@@ -55,11 +56,15 @@ function callWhileStringIsNotEmpty(string, func) {
   if (typeof string !== 'string') {
     return null;
   }
+
   const temp = string;
+
   if (string.length === 1) {
     return func(temp);
   }
+
   func(temp);
+
   return callWhileStringIsNotEmpty(temp.slice(0, -1), func);
 }
 
