@@ -8,7 +8,7 @@
     "lint:fix": "eslint ./tasks --fix",
     "format": "prettier --write ./tasks",
     "prepare": "husky install",
-    "test" : "jasmine --config=jasmine.json"
+    "test": "jasmine --config=jasmine.json"
   },
   "repository": {
     "type": "git",
