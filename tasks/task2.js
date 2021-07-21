@@ -7,7 +7,6 @@ function chunk(array, number) {
   return [array.slice(0, number), array.slice(number)];
 }
 
-/* Task 2 */
 function getNonRepeatingElementsInFirstArray(firstArray, secondArray) {
   const resultArray = [];
 
@@ -20,7 +19,7 @@ function getNonRepeatingElementsInFirstArray(firstArray, secondArray) {
   return resultArray;
 }
 
-/* Task 3 */
+/* Task 2 */
 function difference(array1, array2) {
   if (
     array1 === null ||
@@ -39,7 +38,7 @@ function difference(array1, array2) {
   );
 }
 
-/* Task 4 */
+/* Task 3 */
 function findIndex(array, requiredElement) {
   if (array === null || array.length === 0) {
     return false;
@@ -100,7 +99,6 @@ function fromPairs(array) {
 }
 
 /* Task 6 */
-
 function uniq(array) {
   if (array === null || array.length === 0) {
     return [];
