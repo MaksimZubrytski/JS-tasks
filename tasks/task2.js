@@ -20,6 +20,7 @@ function getNonRepeatingElementsInFirstArray(firstArray, secondArray) {
   return resultArray;
 }
 
+/* Task 3 */
 function difference(array1, array2) {
   if (
     array1 === null ||
@@ -38,9 +39,7 @@ function difference(array1, array2) {
   );
 }
 
-// Expected result
-difference([2, 1], [2, 3, 4]); // => [1, 3, 4]
-
+/* Task 4 */
 function findIndex(array, requiredElement) {
   if (array === null || array.length === 0) {
     return false;
