@@ -66,13 +66,6 @@ function findIndex(array, requiredElement) {
   return index;
 }
 
-// Expected result
-const numbers = [3, 5, 1, 6, 7];
-console.log(findIndex(numbers, 1)); // => 2
-
-const users = [{ name: 'User1' }, { name: 'User2' }, { name: 'User3' }];
-console.log(findIndex(users, user => user.name === 'User2')); // => 1
-
 /* Task 4 */
 const isElementArray = elem => Array.isArray(elem);
 
