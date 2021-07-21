@@ -100,10 +100,117 @@ function fromPairs(array) {
   return result;
 }
 
+/* Task 6 */
+
+function uniq(array) {
+  if (array === null || array.length === 0) {
+    return [];
+  }
+
+  const result = [];
+
+  array.forEach(el => {
+    if (!result.includes(el)) {
+      result.push(el);
+    }
+  });
+
+  return result;
+}
+
+/* Task 7 */
+function every(array, condition) {
+  if (array === null || array.length === 0 || condition === null) {
+    return false;
+  }
+
+  for (let i = 0; i < array.length; i += 1) {
+    if (!condition(array[i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/* Task 8 */
+function find(array, condition) {
+  if (array === null || array.length === 0 || condition === null) {
+    return null;
+  }
+
+  let result;
+
+  for (let i = 0; i < array.length; i += 1) {
+    if (condition(array[i])) {
+      result = array[i];
+      break;
+    }
+  }
+
+  return result;
+}
+
+/* Task 9 */
+function groupBy(array, condition) {
+  if (array === null || array.length === 0 || condition === null) {
+    return {};
+  }
+
+  return array.reduce((acc, el) => {
+    if (!acc[condition(el)]) {
+      acc[condition(el)] = [];
+    }
+
+    acc[condition(el)].push(el);
+
+    return acc;
+  }, {});
+}
+
+/* Task 10 */
+function isEqual(obj1, obj2) {
+  if (obj1 === obj2) {
+    return true;
+  }
+
+  if (
+    obj1 === null ||
+    obj2 === null ||
+    typeof obj1 !== 'object' ||
+    typeof obj2 !== 'object'
+  ) {
+    return false;
+  }
+
+  const obj1Keys = Object.keys(obj1);
+  const obj2Keys = Object.keys(obj2);
+
+  if (obj1Keys.length !== obj2Keys.length) {
+    return false;
+  }
+
+  for (let i = 0; i < obj1Keys.length; i += 1) {
+    if (
+      !obj2Keys.includes(obj1Keys[i]) ||
+      !isEqual(obj1[obj1Keys[i]], obj2[obj1Keys[i]])
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 module.exports = {
   chunk,
   difference,
   findIndex,
   flattenDeep,
   fromPairs,
+  uniq,
+  every,
+  find,
+  groupBy,
+  isEqual,
 };
