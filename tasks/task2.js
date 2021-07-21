@@ -93,9 +93,9 @@ function flattenDeep(array) {
 /* Task 5 */
 function fromPairs(array) {
   if (array === null || array.length === 0) {
-    return [];
+    return {};
   }
-  
+
   const result = {};
 
   array.forEach(el => {
