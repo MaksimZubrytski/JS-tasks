@@ -43,7 +43,7 @@ difference([2, 1], [2, 3, 4]); // => [1, 3, 4]
 
 function findIndex(array, requiredElement) {
   if (array === null || array.length === 0) {
-    return undefined;
+    return false;
   }
 
   let index = -1;
@@ -60,6 +60,7 @@ function findIndex(array, requiredElement) {
   for (let i = 0; i < array.length; i += 1) {
     if (requiredElement === array[i]) {
       index = i;
+      break;
     }
   }
 
