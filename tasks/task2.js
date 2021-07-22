@@ -211,31 +211,42 @@ function groupBy(array, condition) {
 }
 
 /* Task 10 */
-function isEqual(obj1, obj2) {
-  if (obj1 === obj2) {
+function isEqual(elem1, elem2) {
+  if (elem1 === elem2) {
     return true;
   }
 
   if (
-    obj1 === null ||
-    obj2 === null ||
-    typeof obj1 !== 'object' ||
-    typeof obj2 !== 'object'
+    elem1 === null ||
+    elem2 === null ||
+    typeof elem1 !== 'object' ||
+    typeof elem2 !== 'object'
   ) {
     return false;
   }
 
-  const obj1Keys = Object.keys(obj1);
-  const obj2Keys = Object.keys(obj2);
+  const elem1Keys = Object.keys(elem1);
+  const elem2Keys = Object.keys(elem2);
 
-  if (obj1Keys.length !== obj2Keys.length) {
+  if (elem1Keys.length !== elem2Keys.length) {
     return false;
   }
 
-  for (let i = 0; i < obj1Keys.length; i += 1) {
+  for (let i = 0; i < elem1Keys.length; i += 1) {
+    if (!elem2Keys.includes(elem1Keys[i])) {
+      return false;
+    }
     if (
-      !obj2Keys.includes(obj1Keys[i]) ||
-      !isEqual(obj1[obj1Keys[i]], obj2[obj1Keys[i]])
+      typeof elem1[elem1Keys[i]] !== 'object' &&
+      typeof elem2[elem1Keys[i]] !== 'object' &&
+      elem1[elem1Keys[i]] !== elem2[elem1Keys[i]]
+    ) {
+      return false;
+    }
+    if (
+      typeof elem1[elem1Keys[i]] === 'object' &&
+      typeof elem2[elem1Keys[i]] === 'object' &&
+      !isEqual(elem1[elem1Keys[i]], elem2[elem1Keys[i]])
     ) {
       return false;
     }
