@@ -117,6 +117,7 @@ function fromPairs(array) {
 }
 
 /* Task 6 */
+/*
 function uniq(array) {
   if (array === null || array.length === 0) {
     return [];
@@ -132,7 +133,15 @@ function uniq(array) {
 
   return result;
 }
+*/
 
+function uniq(array) {
+  if (array === null || array.length === 0) {
+    return [];
+  }
+
+  return [...new Set(array)];
+}
 /* Task 7 */
 function every(array, condition) {
   if (array === null || array.length === 0 || condition === null) {
