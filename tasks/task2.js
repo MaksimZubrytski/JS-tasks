@@ -37,6 +37,7 @@ function difference(array1, array2) {
 }
 
 /* Task 3 */
+/*
 function findIndex(array, requiredElement) {
   if (array === null || array.length === 0) {
     return false;
@@ -61,6 +62,19 @@ function findIndex(array, requiredElement) {
   }
 
   return index;
+}
+*/
+
+function findIndex(array, requiredElement) {
+  if (array === null || array.length === 0) {
+    return false;
+  }
+
+  if (typeof requiredElement === 'function') {
+    return array.findIndex(requiredElement);
+  }
+
+  return array.indexOf(requiredElement);
 }
 
 /* Task 4 */
