@@ -134,7 +134,6 @@ function uniq(array) {
   return result;
 }
 */
-
 function uniq(array) {
   if (array === null || array.length === 0) {
     return [];
@@ -142,7 +141,9 @@ function uniq(array) {
 
   return [...new Set(array)];
 }
+
 /* Task 7 */
+/*
 function every(array, condition) {
   if (array === null || array.length === 0 || condition === null) {
     return false;
@@ -155,6 +156,14 @@ function every(array, condition) {
   }
 
   return true;
+}
+*/
+function every(array, condition) {
+  if (array === null || array.length === 0 || condition === null) {
+    return false;
+  }
+
+  return array.every(condition);
 }
 
 /* Task 8 */
