@@ -167,6 +167,7 @@ function every(array, condition) {
 }
 
 /* Task 8 */
+/*
 function find(array, condition) {
   if (array === null || array.length === 0 || condition === null) {
     return null;
@@ -182,6 +183,14 @@ function find(array, condition) {
   }
 
   return result;
+}
+*/
+function find(array, condition) {
+  if (array === null || array.length === 0 || condition === null) {
+    return null;
+  }
+
+  return array.find(condition);
 }
 
 /* Task 9 */
