@@ -16,18 +16,6 @@ function chunk(array, number) {
   return result;
 }
 
-function getNonRepeatingElementsInFirstArray(firstArray, secondArray) {
-  const resultArray = [];
-
-  firstArray.forEach(el => {
-    if (secondArray.indexOf(el) === -1) {
-      resultArray.push(el);
-    }
-  });
-
-  return resultArray;
-}
-
 /* Task 2 */
 function difference(array1, array2) {
   if (
@@ -39,12 +27,13 @@ function difference(array1, array2) {
     return [];
   }
 
-  const result = [];
-
-  return result.concat(
-    getNonRepeatingElementsInFirstArray(array1, array2),
-    getNonRepeatingElementsInFirstArray(array2, array1),
-  );
+  return array1.concat(array2).reduce((acc, el) => {
+    if (array1.includes(el) && array2.includes(el)) {
+      return acc;
+    }
+    acc.push(el);
+    return acc;
+  }, []);
 }
 
 /* Task 3 */
