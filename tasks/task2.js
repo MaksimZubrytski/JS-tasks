@@ -78,6 +78,7 @@ function findIndex(array, requiredElement) {
 }
 
 /* Task 4 */
+/*
 const isElementArray = elem => Array.isArray(elem);
 
 function flattenDeep(array) {
@@ -92,6 +93,14 @@ function flattenDeep(array) {
   const newArr = array.reduce((acc, el) => acc.concat(el), []);
 
   return flattenDeep(newArr);
+}
+*/
+function flattenDeep(array) {
+  if (array === null || array.length === 0) {
+    return [];
+  }
+
+  return array.flat(Infinity);
 }
 
 /* Task 5 */
