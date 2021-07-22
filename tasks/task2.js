@@ -109,14 +109,11 @@ function fromPairs(array) {
     return {};
   }
 
-  const result = {};
-
-  array.forEach(el => {
+  return array.reduce((acc, el) => {
     const [key, value] = el;
-    result[key] = value;
-  });
-
-  return result;
+    acc[key] = value;
+    return acc;
+  }, {});
 }
 
 /* Task 6 */
