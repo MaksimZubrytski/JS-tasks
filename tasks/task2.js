@@ -4,7 +4,16 @@ function chunk(array, number) {
     return [];
   }
 
-  return [array.slice(0, number), array.slice(number)];
+  const result = [];
+
+  const numberOfIteration = Math.ceil(array.length / number);
+  let temp = 0;
+  for (let i = 0; i < numberOfIteration; i += 1) {
+    result.push(array.slice(temp, temp + number));
+    temp += number;
+  }
+
+  return result;
 }
 
 function getNonRepeatingElementsInFirstArray(firstArray, secondArray) {
