@@ -236,6 +236,7 @@ function isEqual(elem1, elem2) {
     if (!elem2Keys.includes(elem1Keys[i])) {
       return false;
     }
+
     if (
       typeof elem1[elem1Keys[i]] !== 'object' &&
       typeof elem2[elem1Keys[i]] !== 'object' &&
@@ -243,6 +244,7 @@ function isEqual(elem1, elem2) {
     ) {
       return false;
     }
+
     if (
       typeof elem1[elem1Keys[i]] === 'object' &&
       typeof elem2[elem1Keys[i]] === 'object' &&
