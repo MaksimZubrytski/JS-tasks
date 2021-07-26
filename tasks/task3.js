@@ -95,6 +95,7 @@ const curriedSumm2 = curry(summ2);
 curriedSumm2(1)(2)(3)(4)(5); // => 15
 
 /* Task 5 */
+/*
 let debounce = function (fn, timeOut) {
   return setTimeout(fn, timeOut);
 };
@@ -118,11 +119,24 @@ function CallTracking(fn) {
 }
 
 debounce = CallTracking(debounce);
+*/
+function debounce(fn, timeOut) {
+  if (debounce.timerId) {
+    clearTimeout(debounce.timerId);
+  }
+
+  debounce.timerId = setTimeout(fn, timeOut);
+}
+
+// Expected result
+function dateNow() {
+  console.log(Date.now());
+}
 
 // Second case
-debounce(dateNow, 100); // => canceled
-debounce(dateNow, 150); // => canceled
-debounce(dateNow, 170); // => would be called only last, previous would be canceled
+// debounce(dateNow, 100); // => canceled
+// debounce(dateNow, 150); // => canceled
+debounce(dateNow, 1000); // => would be called only last, previous would be canceled
 
 /* Task 6 */
 function memoize(fn) {
@@ -154,3 +168,12 @@ memoizedSumm(1, 2, 3); // => function summ was called, result 6
 memoizedSumm(1, 2, 3); // => function summ was NOT called, result 6 was remembered for arguments 1, 2, 3 and returned
 memoizedSumm(4, 2, 3); // => function summ was called, result 9
 memoizedSumm(4, 2, 3); // => function summ was NOT called, result 9 was remembered for arguments 4, 2, 3 and returned
+
+module.exports = {
+  rememberResult,
+  callMaxTimes,
+  partial,
+  curry,
+  debounce,
+  memoize,
+};
