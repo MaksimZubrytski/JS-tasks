@@ -25,9 +25,9 @@ function callMaxTimes(numberOfTimes, callback) {
 }
 
 /* Task 3 */
-function partial(callback, appeal) {
+function partial(cb, appeal) {
   return function (name) {
-    return callback(appeal, name);
+    return cb.call(this, appeal, name);
   };
 }
 
@@ -39,7 +39,7 @@ function curry(fn) {
     args.push(el);
 
     if (args.length === fn.length) {
-      return fn(...args);
+      return fn.apply(this, args);
     }
 
     return addElemInArray;
@@ -79,12 +79,12 @@ function debounce(fn, timeOut) {
     return null;
   }
 
-  if (debounce.timerId) {
-    clearTimeout(debounce.timerId);
+  if (this.timerId) {
+    clearTimeout(this.timerId);
   }
 
-  debounce.timerId = setTimeout(fn, timeOut);
-  return debounce.timerId;
+  this.timerId = setTimeout(fn, timeOut);
+  return this.timerId;
 }
 
 /* Task 6 */
