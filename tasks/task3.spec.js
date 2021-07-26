@@ -1,5 +1,6 @@
 describe('Task 3.', () => {
   const task3 = require('./task3.js');
+
   describe('1 rememberResult', () => {
     it('should return valid values', () => {
       const doubleValue = value => 2 * value;
@@ -9,6 +10,7 @@ describe('Task 3.', () => {
       expect(callWithRememberedResult(doubleValue)).toEqual(16);
     });
   });
+
   describe('2 callMaxTimes', () => {
     it('should be called only max times', () => {
       const consoleLog = () => console.log('abc');
@@ -24,6 +26,7 @@ describe('Task 3.', () => {
       expect(consoleLogSpy).toHaveBeenCalledTimes(3);
     });
   });
+
   describe('3 partial', () => {
     it('should be called with all arguments', () => {
       const greeting = 'Hello';
@@ -35,6 +38,7 @@ describe('Task 3.', () => {
       expect(greetSpy).toHaveBeenCalledWith(greeting, receiver);
     });
   });
+
   describe('4 curry', () => {
     it('should work for any amout of arguments', () => {
       const sum1 = (a, b, c) => a + b + c;
@@ -45,6 +49,7 @@ describe('Task 3.', () => {
       expect(curriedSum2(1)(2)(3)(4)(5)).toEqual(15);
     });
   });
+
   describe('5 debounce', () => {
     let cosoleLogSpy;
     let dateNow;
@@ -52,6 +57,7 @@ describe('Task 3.', () => {
       cosoleLogSpy = jasmine.createSpy('console.log');
       dateNow = testValue => () => cosoleLogSpy(testValue);
     });
+
     it('should work for one function call', done => {
         dateNow = testValue => () => cosoleLogSpy(testValue);
       const testValue = 'test 1';
@@ -62,6 +68,7 @@ describe('Task 3.', () => {
         done();
       }, 1100);
     });
+
     it('should work for several function calls', done => {
       dateNow = testValue => () => cosoleLogSpy(testValue);
       const testValue1 = 'test 1';
@@ -77,6 +84,7 @@ describe('Task 3.', () => {
       }, 200);
     });
   });
+  
   describe('6 memoize', () => {
     it('should work for any amout of arguments', () => {
       const sum = (a, b, c) => a + b + c;
