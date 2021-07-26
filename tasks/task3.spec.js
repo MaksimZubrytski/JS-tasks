@@ -59,14 +59,14 @@ describe('Task 3.', () => {
     });
 
     it('should work for one function call', done => {
-        dateNow = testValue => () => cosoleLogSpy(testValue);
+      dateNow = (testValue) => cosoleLogSpy(testValue);
       const testValue = 'test 1';
       task3.debounce(dateNow(testValue), 1000); // => would be called in 1 second
       setTimeout(() => {
         expect(cosoleLogSpy).toHaveBeenCalledTimes(1);
         expect(cosoleLogSpy).toHaveBeenCalledWith(testValue);
         done();
-      }, 1100);
+      }, 110);
     });
 
     it('should work for several function calls', done => {
@@ -84,7 +84,7 @@ describe('Task 3.', () => {
       }, 200);
     });
   });
-  
+
   describe('6 memoize', () => {
     it('should work for any amout of arguments', () => {
       const sum = (a, b, c) => a + b + c;

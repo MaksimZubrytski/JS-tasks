@@ -75,11 +75,16 @@ debounce = CallTracking(debounce);
 */
 // New soft solution :)
 function debounce(fn, timeOut) {
+  if (fn === undefined) {
+    return null;
+  }
+
   if (debounce.timerId) {
     clearTimeout(debounce.timerId);
   }
 
   debounce.timerId = setTimeout(fn, timeOut);
+  return debounce.timerId;
 }
 
 /* Task 6 */
