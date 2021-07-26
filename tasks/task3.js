@@ -86,3 +86,39 @@ function summ2(a, b, c, d, e) {
 }
 const curriedSumm2 = curry(summ2);
 curriedSumm2(1)(2)(3)(4)(5); // => 15
+
+/* Task 5 */
+const debounce = function (fn, timeOut) {
+  return setTimeout(fn, timeOut);
+};
+
+// Expected result
+function dateNow() {
+  console.log(Date.now());
+}
+
+function work(fn) {
+  let isCalled = false;
+  let timerId;
+  return function (func, time) {
+    if (isCalled) {
+      clearTimeout(timerId);
+    }
+    timerId = fn.call(this, func, time);
+
+    isCalled = true;
+  };
+}
+
+/*
+// First case
+debounce(dateNow, 1000); // => would be called in 1 second
+*/
+// ...
+
+// Second case
+/*
+debounce(dateNow, 100); // => canceled
+debounce(dateNow, 150); // => canceled
+debounce(dateNow, 170); // => would be called only last, previous would be canceled
+*/
