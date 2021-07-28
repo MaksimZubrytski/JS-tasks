@@ -75,46 +75,6 @@ function Collection(Constructor) {
   };
 }
 
-// Expected result
-function Dog(id, name) {
-  this.id = id;
-  this.name = name;
-}
-
-const dogsCollection = new Collection(Dog);
-
-dogsCollection.readAll(); // => []
-
-dogsCollection.add(1, 'Test name1'); // Creates instance of Dog
-dogsCollection.add(2, 'Test name2'); // Creates instance of Dog
-dogsCollection.add(3, 'Test name3'); // Creates instance of Dog
-
-dogsCollection.readAll(); // => array [Dog instance(id = 1, name = 'Test name1'), Dog instance(id = 2, name = 'Test name2'), Dog instance(id = 3, name = 'Test name3')]
-
-const dogsCollectionItem = dogsCollection.get(dog => dog.id === 1);
-
-dogsCollectionItem
-  .update(dog => {
-    dog.name = 'Updated test name 1'; // => Dog instance(id = 1, name = 'Updated test name 1')
-  })
-  .update(dog => {
-    dog.someNewField = 'Some new field'; // => nothing changed, collection items don't support initial model's extension (HINT: Object.seal should be used)
-  });
-
-const dog1 = dogsCollectionItem.read(); // => returns Dog instance object(id = 1, name = 'Test name1')
-
-const dogsCollectionItems = dogsCollection.getBy(dog => dog.id < 3);
-
-dogsCollectionItems.update((dog, index) => {
-  // => callback iterates through all matches collection's items ([Dog instance(id = 1, name = 'Test name1'), Dog instance(id = 2, name = 'Test name2')])
-  dog.name = `Updated test name ${index}`;
-});
-
-const dogs = dogsCollectionItems.read(); // => array [Dog instance(id = 1, name = 'Test name1'), Dog instance(id = 2, name = 'Test name2')]
-
-dogsCollectionItem.remove(); // => removes Dog instance object(id = 1, name = 'Test name1') from collection
-dogsCollection.remove(1);
-
 module.exports = {
   createObject,
   Collection,
