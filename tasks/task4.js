@@ -17,8 +17,13 @@ function CollectionItem(item, data, index) {
   this.data = data;
   this.index = index;
 
-  this.update = function (cb) {
+  this.seal = function () {
     Object.seal(this.item);
+  };
+
+  this.seal();
+
+  this.update = function (cb) {
     cb(this.item);
     return this;
   };
@@ -28,8 +33,7 @@ function CollectionItem(item, data, index) {
   };
 
   this.remove = function () {
-    this.data.splice(index, 1);
-    return this.item;
+    return this.data.splice(index, 1)[0];
   };
 }
 
@@ -46,10 +50,18 @@ function Collection(Constructor) {
   };
 
   this.get = function (cb) {
-    return new CollectionItem(
-      this.data.find(cb),
-      this.data,
-      this.data.findIndex(cb),
+    return Object.defineProperty(
+      new CollectionItem(
+        this.data.find(cb),
+        this.data,
+        this.data.findIndex(cb),
+      ),
+      'item',
+      {
+        writable: false,
+        enumerable: true,
+        configurable: true,
+      },
     );
   };
 
@@ -71,7 +83,7 @@ function Collection(Constructor) {
   };
 
   this.remove = function (index) {
-    this.data.splice(index, 1);
+    return this.data.splice(index, 1)[0];
   };
 }
 
