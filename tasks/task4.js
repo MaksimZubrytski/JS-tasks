@@ -12,31 +12,6 @@ function createObject(obj) {
 }
 
 /* Task 2 */
-function CollectionItem(item, data, index) {
-  this.item = item;
-  this.data = data;
-  this.index = index;
-
-  this.seal = function () {
-    Object.seal(this.item);
-  };
-
-  this.seal();
-
-  this.update = function (cb) {
-    cb(this.item);
-    return this;
-  };
-
-  this.read = function () {
-    return this.item;
-  };
-
-  this.remove = function () {
-    return this.data.splice(index, 1)[0];
-  };
-}
-
 function Collection(Constructor) {
   this.data = [];
   this.collectionItems = null;
@@ -50,19 +25,23 @@ function Collection(Constructor) {
   };
 
   this.get = function (cb) {
-    return Object.defineProperty(
-      new CollectionItem(
-        this.data.find(cb),
-        this.data,
-        this.data.findIndex(cb),
-      ),
-      'item',
-      {
-        writable: false,
-        enumerable: true,
-        configurable: true,
+    return {
+      item: this.data.find(cb),
+      data: this.data,
+      index: this.data.findIndex(cb),
+
+      update(func) {
+        Object.seal(this.item);
+        func(this.item);
+        return this;
       },
-    );
+      read() {
+        return this.item;
+      },
+      remove() {
+        return this.data.splice(this.index, 1)[0];
+      },
+    };
   };
 
   this.getBy = function (cb) {
